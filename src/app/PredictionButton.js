@@ -49,37 +49,40 @@ const PredictionButton = ({ model, image, setPrediction, prediction }) => {
  };
 
  return (
-  <div>
-   <button onClick={handleImagePrediction} disabled={!image || !model}>
+  <div className="p-6 bg-white rounded-lg shadow-md space-y-4">
+   <button className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-300 disabled:opacity-50"
+    onClick={handleImagePrediction}
+    disabled={!image || !model}>
     Predict
    </button>
-   <h2>Prediction: {prediction}</h2>
+   <h2 className="text-lg font-semibold text-gray-800"> Prediction: <span className="text-blue-500">{prediction || "N/A"}</span>
+   </h2>
    {nutritionInfo && (
-    <div>
-     <h3>Nutrition Information:</h3>
-     <p>
+    <div className="mt-4 bg-gray-50 p-4 rounded-md shadow-inner">
+     <h3 className="text-xl font-semibold text-green-600 mb-2"> Nutrition Information </h3>
+     <p className="text-sm text-gray-700">
       <strong>Serving Size:</strong> {nutritionInfo.serving_size}
      </p>
-     <p>
+     <p className="text-sm text-gray-700">
       <strong>Calories:</strong> {nutritionInfo.calories} kcal
      </p>
-     <h4>Macronutrients:</h4>
-     <ul>
+     <h4 className="text-md font-semibold text-gray-800 mt-3">Macronutrients:</h4>
+     <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
       <li>Protein: {nutritionInfo.macronutrients.protein}g</li>
       <li>Carbohydrates: {nutritionInfo.macronutrients.carbohydrates}g</li>
       <li>Fat: {nutritionInfo.macronutrients.fat}g</li>
       <li>Fiber: {nutritionInfo.macronutrients.fiber}g</li>
      </ul>
-     <h4>Vitamins:</h4>
-     <ul>
+     <h4 className="text-md font-semibold text-gray-800 mt-3">Vitamins:</h4>
+     <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
       {Object.entries(nutritionInfo.vitamins).map(([key, value]) => (
        <li key={key}>
         {key.replace("_", " ")}: {value}
        </li>
       ))}
      </ul>
-     <h4>Minerals:</h4>
-     <ul>
+     <h4 className="text-md font-semibold text-gray-800 mt-3">Minerals:</h4>
+     <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
       {Object.entries(nutritionInfo.minerals).map(([key, value]) => (
        <li key={key}>
         {key.replace("_", " ")}: {value}

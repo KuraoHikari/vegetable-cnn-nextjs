@@ -16,7 +16,6 @@ const Camera = ({ isUsingCamera, setImage }) => {
      });
      videoRef.current.srcObject = stream;
 
-     // Listen for the loadeddata event to ensure the video is ready
      videoRef.current.addEventListener("loadeddata", () => {
       setIsVideoLoaded(true);
      });
@@ -55,10 +54,13 @@ const Camera = ({ isUsingCamera, setImage }) => {
  };
 
  return isUsingCamera ? (
-  <div>
-   <video ref={videoRef} style={{ display: "block", maxWidth: "100%" }} />
-   <canvas ref={canvasRef} style={{ display: "none" }} />
-   <button onClick={handleCapturePicture}>Take Picture</button>
+  <div className="flex flex-col items-center justify-center space-y-4 mt-4">
+   <div className="relative border-2 border-gray-300 rounded-lg overflow-hidden shadow-lg">
+    <video ref={videoRef} className="block w-full h-auto rounded-lg" style={{ maxWidth: "100%" }}/>
+    <canvas ref={canvasRef} style={{ display: "none" }} />
+   </div>
+   <button onClick={handleCapturePicture} className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-300"
+   > Take Picture </button>
   </div>
  ) : null;
 };
