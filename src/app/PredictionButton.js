@@ -21,6 +21,7 @@ const PredictionButton = ({ model, image, setPrediction, prediction }) => {
      .div(255.0);
 
     const predictions = await model.predict(imageTensor).data();
+    console.log(predictions)
     const labels = [
      "Bean",
      "Bitter_Gourd",
